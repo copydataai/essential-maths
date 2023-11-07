@@ -7,11 +7,15 @@
     "start": "astro dev",
     "build": "astro check && astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "test:unit": "vitest",
   },
   "dependencies": {
     "@astrojs/check": "^0.3.0",
     "astro": "^3.4.0",
     "typescript": "^5.2.2"
+  },
+  "devDependencies": {
+    "vitest": "^0.34.6"
   }
 }
