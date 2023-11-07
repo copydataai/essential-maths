@@ -1,0 +1,99 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../layouts/Header.astro';
+import Footer from '../layouts/Footer.astro';
+import Card from '../components/Card.astro';
+---
+<Layout title="" description="description astro">
+    <main class="hero">
+        <div class="welcome-container ">
+            <div class="greeting-container">
+                <h1>Welcome to Essential Maths for computing</h1>
+            </div>
+            <div class="description-container">
+                <strong>You can choose between the different subjects</strong>
+            </div>
+        </div>
+        <div class="subjects-container">
+            <ul>
+                <li><a href="/number-system">Number Systems</a></li>
+                <li><a href="/criptology">Criptology</a></li>
+            </ul>
+        </div>
+    </main>
+    <Footer/>
+</Layout>
+
+<style>
+.hero {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 24px;
+ }
+
+ h1{
+     font-size: 42px;
+ }
+
+ strong{
+     font-size: 24px;
+     color: #F5E8C7;
+ }
+
+ a {
+     font-size: 18px;
+ }
+
+.greetings-container {
+    margin-bottom: 32px;
+}
+
+.welcome-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 32px;
+ }
+
+.subjects-container ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    align-items: center;
+}
+
+.subjects-container ul li {
+    padding: 8px;
+    border-radius: 8px;
+    margin-left: 12px;
+    margin-top: 12px
+    margin-bottom: 12px;
+ }
+
+ @media (max-width: 640px) {
+     h1 {
+         font-size: 28px;
+     }
+     .greeting-container{
+         margin-left: 50px;
+     }
+     .description-container {
+         width: 315px;
+     }
+
+     strong {
+         font-size: 18px;
+     }
+     a {
+        font-size: 18px;
+     }
+
+     .hero div {
+         margin-bottom: 24px;
+     }
+
+
+ }
+</style>
