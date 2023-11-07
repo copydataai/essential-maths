@@ -17,9 +17,12 @@ jobs:
     name: Use Node.js ${{ matrix.node-version }}
     steps:
       - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v2
+        with:
+          version: 8
       - uses: actions/setup-node@v4.0.0
         with:
           node-version: ${{ matrix.node-version }}
-          cache: "npm"
-      - run: npm ci
-      - run: npm run test:unit
+          cache: "pnpm"
+      - run: pnpm install
+      - run: pnpm run test:unit
