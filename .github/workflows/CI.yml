@@ -3,7 +3,7 @@ name: CI node
 on:
   push:
     branches: [main]
-  pull_requests:
+  pull_request:
     branches: [main]
 
 jobs:
@@ -12,7 +12,7 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [ 20x ]
+        node-version: [ 20.x ]
 
     name: Use Node.js ${{ matrix.node-version }}
     steps:
