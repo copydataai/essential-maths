@@ -1,4 +1,4 @@
-import { decodeASCII, encodeASCII } from "./ascii";
+import { decodeASCII, encodeASCII, inRangeASCII } from "./ascii";
 
 export enum Side {
     Left = -1,
@@ -15,13 +15,9 @@ export function encodeCaesarCipher(text: string, shift: number, side: Side): str
         }
 
         const encodeSalt = shift * side;
-        let positionSalt = encodeSalt + position;
-        if (side == Side.Left) {
-            encode = encode.concat(positionSalt < 1 ? decodeASCII(positionSalt + 26) : decodeASCII(positionSalt));
-            continue
-        }
+        const positionSalt = inRangeASCII(encodeSalt + position, side);
 
-        encode = encode.concat(positionSalt > 26 ? decodeASCII(positionSalt - 26) : decodeASCII(positionSalt));
+        encode = encode.concat(decodeASCII(positionSalt));
     }
 
     return encode;
