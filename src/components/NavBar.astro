@@ -1,0 +1,67 @@
+
+
+
+<nav>
+    <img class="menu" src="menu.svg" alt="menu" />
+    <div class="navbar-left" >
+        <a href="https://copydataai.com">
+            <img class="logo" src="copydataai.svg" alt="copydataai-logo" />
+        </a>
+        <ul>
+            <li>
+                <a href="/number-systems/">Number Systems</a>
+            </li>
+            <li>
+                <a href="/criptology/">Criptology</a>
+            </li>
+        </ul>
+    </div>
+
+</nav>
+
+<style>
+nav {
+    display: flex;
+    justify-content: space-between;
+}
+
+
+.menu {
+    display: none;
+ }
+
+.logo{
+    width: 32px;
+ }
+
+ .navbar-left{
+     display: flex;
+     margin-left: 12px;
+ }
+ .navbar-left ul{
+    margin: 0 12px 0;
+    list-style: none;
+    padding: 0;
+    display: flex;
+    align-items: center;
+ }
+
+ .navbar-left ul li a {
+     text-decoration: none;
+     padding: 8px;
+     border-radius: 8px;
+ }
+@media (max-width: 640px) {
+    .menu {
+        display: block;
+        width: 30px;
+    }
+    nav > * {
+        margin-left: 12px;
+        margin-right: 12px;
+    }
+    .navbar-left ul {
+        display: none;
+    }
+}
+</style>
