@@ -3,6 +3,10 @@ import type { Config } from 'tailwindcss'
 export default {
   content: ['./src/**/*.{astro,html,md,mdx,tsx}'],
   theme: {
+    fontFamily: {
+      sans: ['--font-geist-sans'],
+      mono: ['--font-geist-mono'],
+    },
     colors: {
       primary: {
   /* Primary: Orbital Kingdom */
@@ -42,7 +46,6 @@ export default {
       },
     },
     extend: {
-
     },
   },
   plugins: [],
