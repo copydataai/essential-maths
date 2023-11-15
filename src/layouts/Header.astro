@@ -1,20 +1,6 @@
 ---
 import NavBar from '../components/NavBar.astro';
 ---
-<header class="header-container">
+<header class="flex items-center flex-col">
     <NavBar />
 </header>
-
-<style is:global>
-    .header-container {
-        display: flex;
-        align-items: center;
-        flex-direction: column;
-    }
-@media (max-width: 640px) {
-    .header-container {
-        justify-content: space-between;
-        align-items: stretch;
-    }
-}
-</style>
