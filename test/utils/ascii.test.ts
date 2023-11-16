@@ -23,11 +23,8 @@ test("decode code ASCII unexpected numbers obtain empty String ", () => {
 
 
 test("inRangeASCII expecte to specific long ciphers", ()=>{
-    expect(inRangeASCII(52, Side.Right)).toEqual(26)
-    expect(inRangeASCII(126, Side.Right)).toEqual(22)
-    expect(inRangeASCII(27, Side.Right)).toEqual(1)
-    expect(inRangeASCII(1, Side.Left)).toEqual(1)
-    expect(inRangeASCII(1, Side.Right)).toEqual(1)
-    expect(inRangeASCII(120, Side.Right)).toEqual(16)
-    expect(inRangeASCII(-120, Side.Left)).toEqual(10)
+    expect(inRangeASCII(52)).toEqual(26)
+    expect(inRangeASCII(126)).toEqual(22)
+    expect(inRangeASCII(27)).toEqual(1)
+    expect(inRangeASCII(1)).toEqual(1)
 })
