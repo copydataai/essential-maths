@@ -15,9 +15,9 @@ export const decodeASCII = (index: number) => {
 // because if its side.Right position = 120 that's going to positive infinite
 // same as side.Left position = -120 that's going to negative infinite
 export function inRangeASCII(position: number, side: Side): number {
-    if (position > 0 && position < 27) {
-        return position;
-    }
+    const maxPosition = alphabetLowerCase.length;
 
-    return inRangeASCII(position + ((side * -1) * 26), side)
+    position = ((position - 1) % maxPosition + maxPosition) % maxPosition + 1;
+
+    return position;
 }
