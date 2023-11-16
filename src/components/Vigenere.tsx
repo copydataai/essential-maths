@@ -1,30 +1,26 @@
-import { createSignal, createMemo, children } from 'solid-js';
-import './TextArea.css'
-import { encodeVigenereCipher, decodeVigenereCipher } from '../utils/vigenereCipher';
 import type { Component, Setter } from 'solid-js';
 
 type VigenereProps = {
     placeholder: string;
-    setCipher: Setter;
-    setKeypass: Setter;
+    setCipher: Setter<string>;
+    setKeypass: Setter<string>;
 };
 
 export const Vigenere: Component<VigenereProps> = (props) => {
-    const { placeholder, setCipher, setKeypass, children  } = props;
+    const { placeholder, setCipher, setKeypass } = props;
 
-    const [ text, setText ] = createSignal<string>("");
 
     const getCipher = (event) => setCipher(event.target.value);
     const getKeypass = (event) => setKeypass(event.target.value);
 
 
     return (
-        <div class="container-criptology">
-            <label htmlFor="keypass">
+        <div class="flex flex-col items-center space-y-4">
+            <label class="" for="keypass">
                 <span>KeyPass</span>
+                <input class="w-36" id="keypass" type="text" onInput={getKeypass} />
             </label>
-            <input id="keypass" type="text" onInput={getKeypass} />
-            <textarea id="" rows="10" cols="20" onInput={getCipher} placeholder={placeholder} />
+            <textarea class="bg-primary-200" onInput={getCipher} placeholder={placeholder} />
         </div>
     );
 }
