@@ -1,10 +1,9 @@
 import { createEffect } from 'solid-js';
-import './CriptoToggleButton.css';
 import type { Component, Accessor, Setter } from 'solid-js';
 
 type ButtonChoiceProps = {
-    option: Accessor;
-    setOption: Setter;
+    option: Accessor<OptionCripto>;
+    setOption: Setter<OptionCripto>;
 };
 
 export enum OptionCripto {
@@ -22,7 +21,7 @@ export const CriptoToggleButton: Component<ButtonChoiceProps> = (props) => {
     })
 
     const changeOption = (option: OptionCripto) => {
-        if ( option == OptionCripto.CaesarCipher ) {
+        if (option == OptionCripto.CaesarCipher) {
             return OptionCripto.VigenereCipher;
         }
 
@@ -30,9 +29,9 @@ export const CriptoToggleButton: Component<ButtonChoiceProps> = (props) => {
     }
 
     return (
-        <div class="cripto-toggle-button">
-            <button onClick={() => setOption(changeOption)}>
-                <div>{option()}</div>
+        <div class="inline-flex align-center rounded-3xl p-4">
+            <button class="flex align-center py-2 px-3 border-2 border-black hover:bg-primary-400 text-black hover:text-primary-400 text-base rounded space-x-2" onClick={() => setOption(changeOption)}>
+                <span class="text-sm text-primary-900 font-semi-bold">{option()}</span>
             </button>
         </div>
     )
