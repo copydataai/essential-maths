@@ -1,0 +1,13 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../layouts/Header.astro';
+import { NumericSystemLayout } from '../../layouts/Numeric.tsx';
+import Footer from '../../layouts/Footer.astro';
+---
+
+
+<Layout title="" description="">
+  <Header />
+  <NumericSystemLayout client:load />
+  <Footer />
+</Layout>
