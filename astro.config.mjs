@@ -9,7 +9,11 @@ export default defineConfig({
   integrations: [solid(), tailwind()],
   output: "server",
   adapter: vercel({
-    webAnalytics: true,
-    speedInsights: true,
+    webAnalytics: {
+      enabled: true,
+    },
+    speedInsights: {
+      enabled: true,
+    }
   })
 });
