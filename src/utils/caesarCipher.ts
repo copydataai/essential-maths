@@ -15,7 +15,7 @@ export function encodeCaesarCipher(text: string, shift: number, side: Side): str
         }
 
         const encodeSalt = shift * side;
-        const positionSalt = inRangeASCII(encodeSalt + position, side);
+        const positionSalt = inRangeASCII(encodeSalt + position);
 
         encode = encode.concat(decodeASCII(positionSalt));
     }
