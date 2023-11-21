@@ -4,20 +4,50 @@ import Header from '../layouts/Header.astro';
 import Footer from '../layouts/Footer.astro';
 ---
 <Layout title="Essential Maths for computing to ATU" description="A simple calculator, resolver, something to obtain results.">
-    <main class="flex flex-col items-center">
-        <div class="flex flex-col items-center">
-            <div class="p-4">
-                <h1 class="text-5xl font-black">Welcome to Essential Maths for computing</h1>
+    <Header />
+    <main class="hero min-h-screen">
+        <div class="hero-content text-center flex flex-col">
+            <div class="max-w-md">
+                <div class="p-4">
+                    <h1 class="text-5xl font-black">Welcome to Essential Maths for computing</h1>
+                </div>
+                <div >
+                    <strong class="text-2xl font-semibold">You can choose between the different subjects</strong>
+                </div>
             </div>
-            <div >
-                <strong class="text-2xl font-semibold">You can choose between the different subjects</strong>
+            <div class="carousel bg-neutral rounded-box w-96 lg:w-auto">
+
+            <div class="carousel-item card">
+                <div class="card-body">
+                    <h2 class="card-title">
+                        <a class="" href="/number-system">Number Systems</a>
+                    </h2>
+                </div>
             </div>
-        </div>
-        <div class="p-4">
-            <ul class="flex justify-between">
-                <li class="px-4"><a class="text-primary-300 text-xl" href="/number-system">Number Systems</a></li>
-                <li class="px-4"><a class="text-primary-300 text-xl" href="/criptology">Criptology</a></li>
-            </ul>
+            <div class="card carousel-item">
+                <div class="card-body">
+                    <h2 class="card-title">
+                        <a class="" href="/criptology">Criptology</a>
+                    </h2>
+                </div>
+            </div>
+            <div class="card carousel-item borded">
+                <div class="card-body">
+                    <h2 class="card-title">
+                        <a class="" href="/">Functions</a>
+                        <span class="badge badge-xs badge-secondary">soon</span>
+                    </h2>
+                </div>
+            </div>
+            <div class="card carousel-item">
+                <div class="card-body">
+                    <h2 class="card-title">
+                        <a class="" href="/">Matrices</a>
+                        <span class="badge badge-xs badge-secondary">soon</span>
+                    </h2>
+                </div>
+            </div>
+            </div>
         </div>
     </main>
     <Footer/>
