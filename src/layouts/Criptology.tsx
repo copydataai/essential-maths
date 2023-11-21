@@ -45,7 +45,7 @@ export function CriptologyLayout() {
             <Show when={option() === OptionCripto.VigenereCipher}>
                 <Vigenere placeholder={quoteVigenere} setCipher={setVigenereCipher} setKeypass={setKeypass} />
             </Show>
-            <textarea class="rounded pt-5" name="output-code" disabled>{cipherMemo()}</textarea>
+            <textarea class="textarea textarea-lg w-full max-w-sm" disabled>{cipherMemo()}</textarea>
         </div>
     );
 }
