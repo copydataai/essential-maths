@@ -29,10 +29,8 @@ export const CriptoToggleButton: Component<ButtonChoiceProps> = (props) => {
     }
 
     return (
-        <div class="inline-flex align-center rounded-3xl p-4">
-            <button class="flex align-center py-2 px-3 border-2 border-black hover:bg-primary-400 text-black hover:text-primary-400 text-base rounded space-x-2" onClick={() => setOption(changeOption)}>
-                <span class="text-sm text-primary-900 font-semi-bold">{option()}</span>
-            </button>
-        </div>
+        <button class="btn btn-accent" onClick={() => setOption(changeOption)}>
+            <span class="text-sm font-semi-bold">{option()}</span>
+        </button>
     )
 }
