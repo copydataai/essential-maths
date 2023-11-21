@@ -1,17 +1,20 @@
-<nav class="flex justify-between sm:mx-4">
-    <!-- TODO: Implement menu option to mobile devices -->
-    <!-- <img class="hidden w-8 sm:block" src="/menu.svg" alt="menu" /> -->
-    <div class="flex ml-4" >
-        <a href="https://copydataai.com">
-            <img class="w-9" src="/copydataai.svg" alt="copydataai-logo" />
-        </a>
-        <ul class="flex align-center mx-4 ">
-            <li class="p-3">
-                <a href="/number-system">Number System</a>
-            </li>
-            <li class="p-3">
-                <a href="/criptology">Criptology</a>
-            </li>
-        </ul>
+<nav class="navbar bg-base-100">
+  <div class="navbar-start">
+    <div class="dropdown">
+      <label tabindex="0" class="btn btn-ghost lg:hidden">
+        <img class="h-5 w-5" src="/menu.svg"/>
+      </label>
+      <ul tabindex="0" class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
+        <li><a href="/number-system">Number system</a></li>
+        <li><a href="/criptology">Criptology</a></li>
+      </ul>
     </div>
+    <a class="btn btn-ghost text-xl" href="https://copydataai.com">Jose Sanchez</a>
+  </div>
+  <div class="navbar-center hidden lg:flex">
+    <ul class="menu menu-horizontal px-1">
+      <li><a href="/number-system">Number system</a></li>
+      <li><a href="/criptology">Criptology</a></li>
+    </ul>
+  </div>
 </nav>
