@@ -53,23 +53,21 @@ export const Caesar: Component<CaesarProps> = (props) => {
         return value;
     })
 
-    const sideMemo = createMemo<string>(() => side() == Side.Left ? "Left" : "Right")
+    const sideMemo = createMemo<string>(() => side() == Side.Left ? "◀ " : "▶ ")
     return (
-        <div class="flex flex-col items-center space-y-4">
-            <div class="flex space-x-4 items-center">
-                <label class="space-x-2">
-                    <span>Shift</span>
-                    <input class="w-12 rounded" type="number" value={shiftMemo()} onKeyPress={handleKeyPress} onInput={handleInputChange} step="1" min="0" />
+        <div class="flex flex-col items-center">
+            <div class="flex ">
+                <label class="label">
+                    <span class="w-1/12">Shift</span>
+                    <input placeholder='Shift' class="input input-xs w-5/12 max-w-xs" type="number" value={shiftMemo()} onKeyPress={handleKeyPress} onInput={handleInputChange} step="1" min="0" />
                 </label>
-                <label class="bg-gray-100">
-                    <button class="flex align-center py-2 px-3 border-2 border-black hover:bg-primary-400 text-black hover:text-primary-400 text-base rounded-full space-x-2" onClick={changeSide}>
-                        <span class="text-sm text-primary-900 font-semi-bold">
-                            {sideMemo()}
-                        </span>
-                    </button>
-                </label>
+                <button class="btn btn-secondary" onClick={changeSide}>
+                    <span class="text-sm text-primary-900 font-semi-bold">
+                        {sideMemo()}
+                    </span>
+                </button>
             </div>
-            <textarea class="bg-primary-200" onInput={getText} placeholder={placeholder} />
+            <textarea class="textarea textarea-ghost" onInput={getText} placeholder={placeholder} />
         </div>
     );
 }
