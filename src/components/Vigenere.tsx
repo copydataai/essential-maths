@@ -15,12 +15,12 @@ export const Vigenere: Component<VigenereProps> = (props) => {
 
 
     return (
-        <div class="flex flex-col items-center space-y-4">
-            <label class="" for="keypass">
+        <div class="flex flex-col items-center">
+            <div class="flex items-center">
                 <span>KeyPass</span>
-                <input class="w-36" id="keypass" type="text" onInput={getKeypass} />
-            </label>
-            <textarea class="bg-primary-200" onInput={getCipher} placeholder={placeholder} />
+                <input placeholder='Keypass' class="input input-md w-5/12 max-w-sm" id="keypass" type="text" onInput={getKeypass} />
+            </div>
+            <textarea class="textarea textarea-ghost " onInput={getCipher} placeholder={placeholder} />
         </div>
     );
 }

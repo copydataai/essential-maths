@@ -58,11 +58,11 @@ export const Caesar: Component<CaesarProps> = (props) => {
         <div class="flex flex-col items-center">
             <div class="flex ">
                 <label class="label">
-                    <span class="w-1/12">Shift</span>
-                    <input placeholder='Shift' class="input input-xs w-5/12 max-w-xs" type="number" value={shiftMemo()} onKeyPress={handleKeyPress} onInput={handleInputChange} step="1" min="0" />
+                    <span class="label-text">Shift</span>
+                    <input placeholder='Shift' class="input input-xs input-bordered w-5/12 max-w-xs" type="number" value={shiftMemo()} onKeyPress={handleKeyPress} onInput={handleInputChange} step="1" min="0" />
                 </label>
                 <button class="btn btn-secondary" onClick={changeSide}>
-                    <span class="text-sm text-primary-900 font-semi-bold">
+                    <span class="text-sm font-semi-bold">
                         {sideMemo()}
                     </span>
                 </button>
