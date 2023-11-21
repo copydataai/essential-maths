@@ -25,6 +25,7 @@
   },
   "devDependencies": {
     "@vitest/coverage-istanbul": "^0.34.6",
+    "daisyui": "^4.4.2",
     "vitest": "^0.34.6"
   }
 }
