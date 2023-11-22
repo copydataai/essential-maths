@@ -64,31 +64,30 @@ export function NumericSystemLayout() {
     return (
         <div class="flex flex-col items-center space-y-4">
             <div class="flex justify-between space-x-4">
-                {/* TODO: Improve radio button */}
-                <input type="radio" name="numeric" value={NumericOptions.binary} onChange={() => setOption(NumericOptions.binary)} />
-                <input type="radio" name="numeric" value={NumericOptions.octal} onChange={() => setOption(NumericOptions.octal)} />
-                <input type="radio" name="numeric" value={NumericOptions.denary} onChange={() => setOption(NumericOptions.denary)} checked />
-                <input type="radio" name="numeric" value={NumericOptions.hex} onChange={() => setOption(NumericOptions.hex)} />
+                <button class="btn btn-neutral hover:btn-secondary" onClick={() => setOption(NumericOptions.binary)}>{NumericOptions.binary}</button>
+                <button class="btn btn-neutral hover:btn-secondary" onClick={() => setOption(NumericOptions.octal)}>{NumericOptions.octal}</button>
+                <button class="btn btn-neutral hover:btn-secondary" onClick={() => setOption(NumericOptions.denary)}>{NumericOptions.denary}</button>
+                <button class="btn btn-neutral hover:btn-secondary" onClick={() => setOption(NumericOptions.hex)}>{NumericOptions.hex}</button>
             </div>
             <div class="flex flex-col items-center space-y-4">
-                <span class="text-primary-500 font-black">
+                <span class="font-bold">
                     {memoOption().main}
                 </span>
                 {/* TODO: limit the input by every type   */}
-                <textarea name="" onInput={getInput}></textarea>
+                <textarea class="textarea textarea-bordered" onInput={getInput}></textarea>
             </div>
-            <div class="flex space-y-4 items-center">
-                <div class="flex flex-col items-center space-x-4 space-y-4">
-                    <span>{memoOption().options.at(0)}</span>
-                    <textarea disabled>{memoNumber().toString(memoOption().values.at(0))}</textarea>
+            <div class="flex items-center">
+                <div class="flex flex-col items-center">
+                    <span class="font-semi-bold">{memoOption().options.at(0)}</span>
+                    <textarea class="textarea textarea-xs" disabled>{memoNumber().toString(memoOption().values.at(0))}</textarea>
                 </div>
-                <div class="flex flex-col items-center space-x-4 space-y-4">
-                    <span>{memoOption().options.at(1)}</span>
-                    <textarea disabled>{memoNumber().toString(memoOption().values.at(1))}</textarea>
+                <div class="flex flex-col items-center ">
+                    <span class="font-semi-bold">{memoOption().options.at(1)}</span>
+                    <textarea class="textarea textarea-xs" disabled>{memoNumber().toString(memoOption().values.at(1))}</textarea>
                 </div>
-                <div class="flex flex-col items-center space-x-4 space-y-4">
-                    <span>{memoOption().options.at(2)}</span>
-                    <textarea disabled>{memoNumber().toString(memoOption().values.at(2))}</textarea>
+                <div class="flex flex-col items-center">
+                    <span class="font-semi-bold">{memoOption().options.at(2)}</span>
+                    <textarea class="textarea uppercase textarea-xs" disabled>{memoNumber().toString(memoOption().values.at(2))}</textarea>
                 </div>
             </div>
         </div>
