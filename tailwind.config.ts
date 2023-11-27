@@ -5,8 +5,8 @@ export default {
   content: ['./src/**/*.{astro,html,md,mdx,tsx}'],
   theme: {
     fontFamily: {
-      sans: ['--font-geist-sans'],
-      mono: ['--font-geist-mono'],
+      sans: ["IBM Plex Mono", "monospace"],
+      mono: ["IBM Plex Mono", "monospace"]
     },
   },
   plugins: [daisyui],
