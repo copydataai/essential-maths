@@ -1,0 +1,13 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../layouts/Header.astro';
+import { MatricesLayout } from '../../layouts/Matrices.tsx';
+import Footer from '../../layouts/Footer.astro';
+---
+
+
+<Layout title="Functions" description="">
+  <Header />
+  <MatricesLayout client:load />
+  <Footer />
+</Layout>
