@@ -1,47 +1,35 @@
-import { createEffect } from 'solid-js';
-import type { Component, Accessor, Setter } from 'solid-js';
+import type { Component, Setter } from 'solid-js';
 
 type ButtonChoiceProps = {
-    option: Accessor<OptionCripto>;
     setOption: Setter<OptionCripto>;
     setMode: Setter<boolean>;
 };
 
 export enum OptionCripto {
-    CaesarCipher = "Caesar Cipher",
-    VigenereCipher = "Vigenere Cipher",
+    CaesarCipher = "Caesar",
+    VigenereCipher = "Vigenere",
 };
 
 
 export const CriptoToggleButton: Component<ButtonChoiceProps> = (props) => {
-    const { option, setOption, setMode } = props;
-
-
-    createEffect(() => {
-        // TODO: To validate in localstorage which option they choice
-        // TODO: to apply components to submit to caesar or vigenere
-    })
-
-    const changeOption = (option: OptionCripto) => {
-        if (option == OptionCripto.CaesarCipher) {
-            return OptionCripto.VigenereCipher;
-        }
-
-        return OptionCripto.CaesarCipher;
-    }
+    const { setOption, setMode } = props;
 
     return (
         <>
            <div class="form-control">
-                <label class="label cursor-pointer">
+                <label class="label cursor-pointer space-x-2">
                     <span class="label-text">Encode</span> 
-                    <input type="checkbox" class="toggle" onClick={() => setMode(( mode) => !mode)}/>
+                    <input type="checkbox" class="toggle toggle-primary" onClick={() => setMode(( mode) => !mode)}/>
                     <span class="label-text">Decode</span> 
                 </label>
             </div> 
-            <button class="btn btn-accent" onClick={() => setOption(changeOption)}>
-                <span class="text-sm font-semi-bold">{option()}</span>
-            </button>
+           <div class="form-control">
+                <label class="label cursor-pointer space-x-2">
+                    <span class="label-text">{OptionCripto.CaesarCipher}</span> 
+                    <input type="checkbox" class="toggle toggle-secondary" onClick={() => setOption((option) => option === OptionCripto.CaesarCipher ? OptionCripto.VigenereCipher : OptionCripto.CaesarCipher)}/>
+                    <span class="label-text">{OptionCripto.VigenereCipher}</span> 
+                </label>
+            </div> 
         </>
     )
 }

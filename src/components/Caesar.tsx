@@ -1,6 +1,6 @@
 import { createMemo, createSignal } from 'solid-js';
 import { Side } from '../utils/caesarCipher';
-import type { Component, Setter, Accessor } from 'solid-js';
+import type { Component, Setter} from 'solid-js';
 
 import './Input.css'
 
@@ -8,12 +8,11 @@ type CaesarProps = {
     placeholder: string;
     setShift: Setter<number>;
     setCipher: Setter<string>;
-    side: Accessor<Side>;
     setSide: Setter<Side>;
 };
 
 export const Caesar: Component<CaesarProps> = (props) => {
-    const { placeholder, setCipher, setShift, side, setSide } = props;
+    const { placeholder, setCipher, setShift, setSide } = props;
 
     // TODO: Create a createSignal to verify the shift
     const [inputValue, setInputValue] = createSignal(0);
@@ -45,7 +44,6 @@ export const Caesar: Component<CaesarProps> = (props) => {
 
 
     const getText = (event) => setCipher(event.target.value)
-    const changeSide = () => side() == Side.Left ? setSide(Side.Right) : setSide(Side.Left)
 
     const shiftMemo = createMemo<number>(() => {
         const value = inputValue()
@@ -53,21 +51,20 @@ export const Caesar: Component<CaesarProps> = (props) => {
         return value;
     })
 
-    const sideMemo = createMemo<string>(() => side() == Side.Left ? "◀ " : "▶ ")
     return (
-        <div class="flex flex-col items-center">
-            <div class="flex ">
-                <label class="label">
-                    <span class="label-text">Shift</span>
-                    <input placeholder='Shift' class="input input-xs input-bordered w-5/12 max-w-xs" type="number" value={shiftMemo()} onKeyPress={handleKeyPress} onInput={handleInputChange} step="1" min="0" />
+        <div class="flex flex-col items-center mb-4">
+            <div class="flex items-center justify-center">
+                <label class="label w-5/12">
+                    <span class="label-text text-xs">Shift</span>
+                    <input placeholder='Shift' class="input input-accent input-xs input-bordered w-5/12" type="number" value={shiftMemo()} onKeyPress={handleKeyPress} onInput={handleInputChange} step="1" min="0" />
                 </label>
-                <button class="btn btn-secondary" onClick={changeSide}>
-                    <span class="text-sm font-semi-bold">
-                        {sideMemo()}
-                    </span>
-                </button>
+                <label class="swap swap-rotate">
+                    <input type="checkbox" onClick={()=> setSide((side) => side === Side.Left ? Side.Right : Side.Left)} checked/>
+                    <img class="swap-off fill-current w-10 h-10 bg-primary rounded-full" src="/arrow-left.svg" alt="arrow-left" />
+                    <img class="swap-on fill-current w-10 h-10 bg-primary rounded-full" src="/arrow-right.svg" alt="arrow-right" /> 
+                </label>
             </div>
-            <textarea class="textarea textarea-ghost" onInput={getText} placeholder={placeholder} />
+            <textarea class="textarea textarea-secondary" onInput={getText} placeholder={placeholder} />
         </div>
     );
 }

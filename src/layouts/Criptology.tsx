@@ -1,4 +1,4 @@
-import { createSignal, createMemo, createEffect, Show } from 'solid-js';
+import { createSignal, createMemo, Show } from 'solid-js';
 import { Caesar } from '../components/Caesar';
 import { Vigenere } from '../components/Vigenere';
 import { CriptoToggleButton, OptionCripto } from '../components/CriptoToggleButton'
@@ -20,14 +20,14 @@ export function CriptologyLayout() {
 
     const cipherMemo = createMemo<string>(() => {
         const encodeMode = mode();
-
-        if (option() == OptionCripto.CaesarCipher) {
+        const optionCripto = option()
+        if (optionCripto === OptionCripto.CaesarCipher) {
             if (encodeMode) {
                 return encodeCaesarCipher(caesarCipher(), shift(), side());
             }
             return decodeCaesarCipher(caesarCipher(), shift(), side());
         }
-        if (option() == OptionCripto.VigenereCipher) {
+        if (optionCripto === OptionCripto.VigenereCipher) {
             if (encodeMode) {
                 return encodeVigenereCipher(vigenereCipher(), keypass());
             }
@@ -40,11 +40,11 @@ export function CriptologyLayout() {
 
     return (
         <div class="flex flex-col items-center mb-4">
-            <CriptoToggleButton option={option} setOption={setOption} setMode={setMode} />
+            <CriptoToggleButton setOption={setOption} setMode={setMode} />
             <Show when={option() === OptionCripto.CaesarCipher} fallback={
                 <Vigenere placeholder={quoteVigenere} setCipher={setVigenereCipher} setKeypass={setKeypass} />
             }>
-                <Caesar placeholder={quoteJuliusCaesar} setCipher={setCaesarCipher} setShift={setShift} side={side} setSide={setSide} />
+                <Caesar placeholder={quoteJuliusCaesar} setCipher={setCaesarCipher} setShift={setShift} setSide={setSide} />
             </Show>
             <textarea class="textarea textarea-lg w-full max-w-sm" disabled>{cipherMemo()}</textarea>
         </div>
