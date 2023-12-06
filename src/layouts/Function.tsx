@@ -45,7 +45,7 @@ export function FunctionLayout() {
                     </div>
                 </div>
             }>
-                <div role="error" class="alert alert-error">
+                <div role="alert" class="alert alert-error">
                     <img class="stroke-current shrink-0 h-6 w-6" src="/error.svg" alt="" />
                     <span >{error()}</span>
                 </div>
