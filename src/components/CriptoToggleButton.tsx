@@ -4,6 +4,7 @@ import type { Component, Accessor, Setter } from 'solid-js';
 type ButtonChoiceProps = {
     option: Accessor<OptionCripto>;
     setOption: Setter<OptionCripto>;
+    setMode: Setter<boolean>;
 };
 
 export enum OptionCripto {
@@ -13,7 +14,8 @@ export enum OptionCripto {
 
 
 export const CriptoToggleButton: Component<ButtonChoiceProps> = (props) => {
-    const { option, setOption } = props;
+    const { option, setOption, setMode } = props;
+
 
     createEffect(() => {
         // TODO: To validate in localstorage which option they choice
@@ -29,8 +31,17 @@ export const CriptoToggleButton: Component<ButtonChoiceProps> = (props) => {
     }
 
     return (
-        <button class="btn btn-accent" onClick={() => setOption(changeOption)}>
-            <span class="text-sm font-semi-bold">{option()}</span>
-        </button>
+        <>
+           <div class="form-control">
+                <label class="label cursor-pointer">
+                    <span class="label-text">Encode</span> 
+                    <input type="checkbox" class="toggle" onClick={() => setMode(( mode) => !mode)}/>
+                    <span class="label-text">Decode</span> 
+                </label>
+            </div> 
+            <button class="btn btn-accent" onClick={() => setOption(changeOption)}>
+                <span class="text-sm font-semi-bold">{option()}</span>
+            </button>
+        </>
     )
 }

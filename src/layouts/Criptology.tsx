@@ -12,38 +12,39 @@ export function CriptologyLayout() {
     const [side, setSide] = createSignal<Side>(Side.Right);
     const [caesarCipher, setCaesarCipher] = createSignal<string>("")
     const [vigenereCipher, setVigenereCipher] = createSignal<string>("")
+    const [mode, setMode] = createSignal<boolean>(false)
 
 
     const quoteJuliusCaesar = "I came, I saw and I conquered by Julius Caesar."
     const quoteVigenere = "The Arts are learnt by reason and method; they are mastered by practice. by Leon Battista Alberti.";
 
-    const cipherText = createMemo<string>(() => {
-        if (caesarCipher().length > 0 && option() == OptionCripto.CaesarCipher) {
-            return caesarCipher();
-        }
-        if (vigenereCipher().length > 0 && option() == OptionCripto.VigenereCipher) {
-            return vigenereCipher();
-        }
-    })
-
     const cipherMemo = createMemo<string>(() => {
-        if (option() == OptionCripto.CaesarCipher && cipherText()) {
-            return encodeCaesarCipher(cipherText(), shift(), side());
+        const encodeMode = mode();
+
+        if (option() == OptionCripto.CaesarCipher) {
+            if (encodeMode) {
+                return encodeCaesarCipher(caesarCipher(), shift(), side());
+            }
+            return decodeCaesarCipher(caesarCipher(), shift(), side());
         }
-        if (option() == OptionCripto.VigenereCipher && cipherText()) {
-            return encodeVigenereCipher(cipherText(), keypass());
+        if (option() == OptionCripto.VigenereCipher) {
+            if (encodeMode) {
+                return encodeVigenereCipher(vigenereCipher(), keypass());
+            }
+            return decodeVigenereCipher(vigenereCipher(), keypass());
         }
+
+        return "";
     })
 
 
     return (
-        <div class="flex flex-col items-center space-y-4">
-            <CriptoToggleButton option={option} setOption={setOption} />
-            <Show when={option() === OptionCripto.CaesarCipher} >
-                <Caesar placeholder={quoteJuliusCaesar} setCipher={setCaesarCipher} setShift={setShift} side={side} setSide={setSide} />
-            </Show>
-            <Show when={option() === OptionCripto.VigenereCipher}>
+        <div class="flex flex-col items-center mb-4">
+            <CriptoToggleButton option={option} setOption={setOption} setMode={setMode} />
+            <Show when={option() === OptionCripto.CaesarCipher} fallback={
                 <Vigenere placeholder={quoteVigenere} setCipher={setVigenereCipher} setKeypass={setKeypass} />
+            }>
+                <Caesar placeholder={quoteJuliusCaesar} setCipher={setCaesarCipher} setShift={setShift} side={side} setSide={setSide} />
             </Show>
             <textarea class="textarea textarea-lg w-full max-w-sm" disabled>{cipherMemo()}</textarea>
         </div>
