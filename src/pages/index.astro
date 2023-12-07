@@ -1,51 +1,59 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import Header from '../layouts/Header.astro';
-import Footer from '../layouts/Footer.astro';
+import Layout from "../layouts/Layout.astro";
+import Header from "../layouts/Header.astro";
+import Footer from "../layouts/Footer.astro";
 ---
-<Layout title="Essential Maths for computing to ATU" description="A simple calculator, resolver, something to obtain results.">
-    <Header />
-    <main class="hero min-h-screen">
-        <div class="hero-content text-center flex flex-col">
-            <div class="max-w-lg">
-                <div class="p-4">
-                    <h1 class="text-5xl font-black">Welcome to Essential Maths for computing</h1>
-                </div>
-                <div >
-                    <strong class="text-2xl font-semibold">You can choose between the different subjects</strong>
-                </div>
-            </div>
-            <div class="carousel bg-accent rounded-box w-96 lg:w-auto">
-                <div class="carousel-item card">
-                    <div class="card-body">
-                        <h2 class="card-title">
-                            <a class="" href="/number-system">Number Systems</a>
-                        </h2>
-                    </div>
-                </div>
-                <div class="card carousel-item">
-                    <div class="card-body">
-                        <h2 class="card-title">
-                            <a class="" href="/cryptology">Cryptology</a>
-                        </h2>
-                    </div>
-                </div>
-                <div class="card carousel-item borded">
-                    <div class="card-body">
-                        <h2 class="card-title">
-                            <a class="" href="/functions">Functions</a>
-                        </h2>
-                    </div>
-                </div>
-                <div class="card carousel-item">
-                    <div class="card-body">
-                        <h2 class="card-title">
-                            <a class="" href="/matrices">Matrices</a>
-                        </h2>
-                    </div>
-                </div>
-            </div>
+
+<Layout
+  title="Essential Maths for computing to ATU"
+  description="A simple calculator, resolver, something to obtain results."
+>
+  <Header />
+  <main class="hero min-h-screen">
+    <div class="hero-content flex flex-col text-center">
+      <div class="max-w-lg">
+        <div class="p-4">
+          <h1 class="text-5xl font-black">
+            Welcome to Essential Maths for computing
+          </h1>
         </div>
-    </main>
-    <Footer/>
+        <div>
+          <strong class="text-2xl font-semibold"
+            >You can choose between the different subjects</strong
+          >
+        </div>
+      </div>
+      <div class="carousel w-96 rounded-box bg-accent lg:w-auto">
+        <div class="card carousel-item">
+          <div class="card-body">
+            <h2 class="card-title">
+              <a class="" href="/number-system">Number Systems</a>
+            </h2>
+          </div>
+        </div>
+        <div class="card carousel-item">
+          <div class="card-body">
+            <h2 class="card-title">
+              <a class="" href="/cryptology">Cryptology</a>
+            </h2>
+          </div>
+        </div>
+        <div class="borded card carousel-item">
+          <div class="card-body">
+            <h2 class="card-title">
+              <a class="" href="/functions">Functions</a>
+            </h2>
+          </div>
+        </div>
+        <div class="card carousel-item">
+          <div class="card-body">
+            <h2 class="card-title">
+              <a class="" href="/matrices">Matrices</a>
+            </h2>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+  <Footer />
 </Layout>

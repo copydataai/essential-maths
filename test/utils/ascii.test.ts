@@ -1,6 +1,5 @@
 import { test, expect } from "vitest";
 import { encodeASCII, decodeASCII, inRangeASCII } from "../../src/utils/ascii";
-import { Side } from "../../src/utils/caesarCipher";
 
 test("encode letters to code ASCII", ()=>{
     expect( encodeASCII("a") ).toEqual(1);
@@ -22,7 +21,7 @@ test("decode code ASCII unexpected numbers obtain empty String ", () => {
 })
 
 
-test("inRangeASCII expecte to specific long ciphers", ()=>{
+test("inRangeASCII expecte to specific long ciphers", () => {
     expect(inRangeASCII(52)).toEqual(26)
     expect(inRangeASCII(126)).toEqual(22)
     expect(inRangeASCII(27)).toEqual(1)
