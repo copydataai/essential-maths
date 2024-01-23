@@ -24,7 +24,7 @@ export function CriptologyLayout() {
   const [side, setSide] = createSignal<Side>(Side.Right);
   const [caesarCipher, setCaesarCipher] = createSignal<string>("");
   const [vigenereCipher, setVigenereCipher] = createSignal<string>("");
-  const [mode, setMode] = createSignal<boolean>(false);
+  const [mode, setMode] = createSignal<boolean>(true);
 
   const quoteJuliusCaesar = "I came, I saw and I conquered by Julius Caesar.";
   const quoteVigenere =
@@ -69,7 +69,10 @@ export function CriptologyLayout() {
           setSide={setSide}
         />
       </Show>
-      <textarea class="textarea textarea-lg w-full max-w-sm" disabled>
+      <textarea
+        class="textarea textarea-bordered textarea-lg w-full max-w-sm"
+        readonly
+      >
         {cipherMemo()}
       </textarea>
     </div>
