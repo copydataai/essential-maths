@@ -14,7 +14,6 @@ type CaesarProps = {
 export const Caesar: Component<CaesarProps> = props => {
   const { placeholder, setCipher, setShift, setSide } = props;
 
-  // TODO: Create a createSignal to verify the shift
   const [inputValue, setInputValue] = createSignal(0);
 
   // Function to handle key press and limit to positive numbers
