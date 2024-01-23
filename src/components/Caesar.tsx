@@ -51,7 +51,7 @@ export const Caesar: Component<CaesarProps> = props => {
 
   return (
     <div class="mb-4 flex flex-col items-center">
-      <div class="flex items-center justify-center">
+      <div class="mb-2 flex items-center justify-center">
         <label class="label w-5/12">
           <span class="label-text text-xs">Shift</span>
           <input
@@ -65,7 +65,7 @@ export const Caesar: Component<CaesarProps> = props => {
             min="0"
           />
         </label>
-        <label class="swap swap-rotate">
+        <label class="swap swap-rotate ml-1">
           <input
             type="checkbox"
             onClick={() =>
@@ -74,12 +74,12 @@ export const Caesar: Component<CaesarProps> = props => {
             checked
           />
           <img
-            class="swap-off h-10 w-10 rounded-full bg-primary fill-current"
+            class="swap-off h-8 w-8 rounded-full bg-primary fill-current"
             src="/arrow-left.svg"
             alt="arrow-left"
           />
           <img
-            class="swap-on h-10 w-10 rounded-full bg-primary fill-current"
+            class="swap-on h-8 w-8 rounded-full bg-primary fill-current"
             src="/arrow-right.svg"
             alt="arrow-right"
           />
