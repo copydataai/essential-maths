@@ -12,6 +12,7 @@ export default {
   plugins: [daisyui],
   daisyui: {
     themes: ['synthwave', 'bumblebee'],
+    logs: false,
   }
 } satisfies Config
 
