@@ -1,0 +1,12 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Header from "../../layouts/Header.astro";
+import { StatisticsLayout } from "../../layouts/Statistics.tsx";
+import Footer from "../../layouts/Footer.astro";
+---
+
+<Layout title="Statistics" description="A simple way to see graphics">
+  <Header />
+  <StatisticsLayout client:load />
+  <Footer />
+</Layout>
