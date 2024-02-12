@@ -1,6 +1,5 @@
 import type { Component } from "solid-js";
-import { createMemo, createEffect } from "solid-js";
-import { onMount, onCleanup } from "solid-js";
+import { createEffect, onMount, onCleanup } from "solid-js";
 import * as Plot from "@observablehq/plot";
 
 type axis = {
@@ -14,8 +13,7 @@ type ScatterPlotProps = {
   yAxisTitle: string;
 };
 
-// generate a solid-js component from observablehq as a ScatterPlot component
-export function ScatterPlot(props: ScatterPlotProps) {
+export const ScatterPlot: Component<ScatterPlotProps> = props => {
   let containerRef;
 
   const createPlot = () => {
@@ -43,23 +41,4 @@ export function ScatterPlot(props: ScatterPlotProps) {
   });
 
   return <div ref={containerRef}></div>;
-}
-
-/* export const ScatterPlot: Component<ScatterPlotProps> = props => {
- *   const { data, xAxisTitle, yAxisTitle } = props;
- *   cons
- *
- *   const plot = Plot.plot({
- *     marks: [
- *       Plot.dot(data, { x: "x", y: "y" }), // Ensure to adjust according to your dataset structure
- *     ],
- *     x: {
- *       label: xAxisTitle,
- *     },
- *     y: {
- *       label: yAxisTitle,
- *     },
- *   });
- *
- *   return <div>{plot}</div>;
- * }; */
+};
