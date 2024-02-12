@@ -11,7 +11,7 @@ export function StatisticsLayout() {
   const dataset = createMemo(() => {
     const x = xAxis();
     const y = yAxis();
-    const length = Math.max(x.length, y.length);
+    const length = Math.min(x.length, y.length);
     const results = new Array(length);
 
     // a loop to iterate the length an create a new array of with x and y values
