@@ -18,9 +18,18 @@ export const ScatterPlot: Component<ScatterPlotProps> = props => {
 
   const createPlot = () => {
     const plot = Plot.plot({
-      marks: [Plot.dot(props.data, { x: "x", y: "y" })],
+      grid: true,
+      marks: [
+        Plot.lineY(props.data, {
+          x: "x",
+          y: "y",
+          marker: true,
+        }),
+      ],
       x: { label: props.xAxisTitle },
-      y: { label: props.yAxisTitle },
+      y: {
+        label: props.yAxisTitle,
+      },
     });
     // Clear the container before appending the new plot
     containerRef.innerHTML = "";
