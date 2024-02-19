@@ -9,8 +9,6 @@ export function StatisticsLayout() {
   const [xTitle, setXTitle] = createSignal<string>("age");
   const [yTitle, setYTitle] = createSignal<string>("time");
 
-  const [itsCartesian, setItsCartesian] = createSignal<boolean>(false);
-
   const dataset = createMemo(() => {
     const x = xAxis();
     const y = yAxis();
@@ -39,20 +37,16 @@ export function StatisticsLayout() {
 
   return (
     <main class="flex flex-col items-center space-y-2">
-      <div class="form-control flex items-center">
-        <label class="label cursor-pointer space-x-2">
-          <span class="label-text">Boxplot</span>
-          <input
-            type="checkbox"
-            class="toggle toggle-primary"
-            onClick={() => setItsCartesian(cartesian => !cartesian)}
-          />
-          <span class="label-text">ScatterPlot</span>
-        </label>
-      </div>
-      <Show
-        when={itsCartesian()}
-        fallback={
+      <div role="tablist" class="tabs tabs-bordered">
+        <input
+          type="radio"
+          name="option"
+          role="tab"
+          class="tab ml-64"
+          aria-label="BoxPlot"
+          checked
+        />
+        <div role="tabpanel" class="tab-content p-10">
           <div class="flex flex-col items-center space-y-2">
             <div class="flex flex-col space-y-2">
               <div class="flex flex-col space-y-2">
@@ -80,63 +74,71 @@ export function StatisticsLayout() {
             </div>
             <BoxPlot data={boxplotDataset()} yAxisTitle={yTitle()} />
           </div>
-        }
-      >
-        <div class="flex flex-col space-y-2">
-          <div class="flex space-x-5">
-            <div class="flex flex-col space-y-2">
-              <div class="space-x-2">
-                <label htmlFor="x-axis">x-axis</label>
-                <input
-                  class="input input-secondary input-xs"
-                  type="text"
-                  name="x-axis"
-                  value={xTitle()}
+        </div>
+        <input
+          type="radio"
+          name="option"
+          role="tab"
+          class="tab ml-20"
+          aria-label="ScatterPlot"
+        />
+        <div role="tabpanel" class="tab-content p-10">
+          <div class="flex flex-col items-center space-y-2">
+            <div class="flex space-x-5">
+              <div class="flex flex-col space-y-2">
+                <div class="space-x-2">
+                  <label htmlFor="x-axis">x-axis</label>
+                  <input
+                    class="input input-secondary input-xs"
+                    type="text"
+                    name="x-axis"
+                    value={xTitle()}
+                    onChange={e => {
+                      setXTitle(e.target.value);
+                    }}
+                  />
+                </div>
+                <textarea
+                  class="textarea textarea-primary"
+                  value={xAxis().toString()}
                   onChange={e => {
-                    setXTitle(e.target.value);
+                    const value = e.target.value;
+                    const data = value.replace(/[^,\d-]/g, "").split(",");
+                    setXAxis(data);
                   }}
-                />
+                ></textarea>
               </div>
-              <textarea
-                class="textarea textarea-primary"
-                value={xAxis().toString()}
-                onChange={e => {
-                  const value = e.target.value;
-                  const data = value.replace(/[^,\d-]/g, "").split(",");
-                  setXAxis(data);
-                }}
-              ></textarea>
-            </div>
-            <div class="flex flex-col space-y-2">
-              <div class="space-x-2">
-                <label htmlFor="y-axis">y-axis</label>
-                <input
-                  class="input input-secondary input-xs"
-                  type="text"
-                  name="y-axis"
-                  value={yTitle()}
+              <div class="flex flex-col space-y-2">
+                <div class="space-x-2">
+                  <label htmlFor="y-axis">y-axis</label>
+                  <input
+                    class="input input-secondary input-xs"
+                    type="text"
+                    name="y-axis"
+                    value={yTitle()}
+                    onChange={e => {
+                      setYTitle(e.target.value);
+                    }}
+                  />
+                </div>
+                <textarea
+                  class="textarea textarea-primary"
+                  value={yAxis().toString()}
                   onChange={e => {
-                    setYTitle(e.target.value);
+                    const value = e.target.value;
+                    setYAxis(value.replace(/[^,\d-]/g, "").split(","));
                   }}
-                />
+                ></textarea>
               </div>
-              <textarea
-                class="textarea textarea-primary"
-                value={yAxis().toString()}
-                onChange={e => {
-                  const value = e.target.value;
-                  setYAxis(value.replace(/[^,\d-]/g, "").split(","));
-                }}
-              ></textarea>
             </div>
           </div>
+          <ScatterPlot
+            data={dataset()}
+            xAxisTitle={xTitle()}
+            yAxisTitle={yTitle()}
+          />
         </div>
-        <ScatterPlot
-          data={dataset()}
-          xAxisTitle={xTitle()}
-          yAxisTitle={yTitle()}
-        />
-      </Show>
+      </div>
     </main>
   );
 }
