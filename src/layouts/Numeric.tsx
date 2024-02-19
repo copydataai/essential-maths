@@ -70,26 +70,42 @@ export function NumericSystemLayout() {
     <div class="mb-4 flex flex-col items-center space-y-4">
       <div class="flex justify-between space-x-4">
         <button
-          class="btn btn-neutral hover:btn-secondary"
+          class="btn hover:btn-secondary"
+          classList={{
+            ["btn-primary"]: NumericOptions.binary === option(),
+            ["btn-neutral"]: NumericOptions.binary !== option(),
+          }}
           onClick={() => setOption(NumericOptions.binary)}
         >
           {NumericOptions.binary}
         </button>
         <button
-          class="btn btn-neutral hover:btn-secondary"
+          class="btn hover:btn-secondary"
           onClick={() => setOption(NumericOptions.octal)}
+          classList={{
+            ["btn-primary"]: NumericOptions.octal === option(),
+            ["btn-neutral"]: NumericOptions.octal !== option(),
+          }}
         >
           {NumericOptions.octal}
         </button>
         <button
-          class="btn btn-neutral hover:btn-secondary"
+          class="btn hover:btn-secondary"
           onClick={() => setOption(NumericOptions.denary)}
+          classList={{
+            ["btn-primary"]: NumericOptions.denary === option(),
+            ["btn-neutral"]: NumericOptions.denary !== option(),
+          }}
         >
           {NumericOptions.denary}
         </button>
         <button
-          class="btn btn-neutral hover:btn-secondary"
+          class="btn hover:btn-secondary"
           onClick={() => setOption(NumericOptions.hex)}
+          classList={{
+            ["btn-primary"]: NumericOptions.hex === option(),
+            ["btn-neutral"]: NumericOptions.hex !== option(),
+          }}
         >
           {NumericOptions.hex}
         </button>
