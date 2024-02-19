@@ -1,4 +1,4 @@
-import { createEffect, createMemo, createSignal, Show } from "solid-js";
+import { createMemo, createSignal, Show } from "solid-js";
 import { Matrix } from "../components/Matrix";
 import { SetMatrix } from "../components/SetMatrix";
 import { StepOptions } from "../components/StepOptions";
@@ -78,13 +78,15 @@ export function MatricesLayout() {
         </Show>
       </Show>
       <Show when={error() !== ""}>
-        <div role="alert" class="alert alert-error">
-          <img
-            class="h-6 w-6 shrink-0 stroke-current"
-            src="/error.svg"
-            alt=""
-          />
-          <span>{error()}</span>
+        <div class="toast">
+          <div role="alert" class="alert alert-error">
+            <img
+              class="h-6 w-6 shrink-0 stroke-current"
+              src="/error.svg"
+              alt=""
+            />
+            <span>{error()}</span>
+          </div>
         </div>
       </Show>
     </main>
