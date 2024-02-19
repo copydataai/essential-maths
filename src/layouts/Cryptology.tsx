@@ -15,7 +15,7 @@ import {
   decodeVigenereCipher,
 } from "../utils/vigenereCipher";
 
-export function CriptologyLayout() {
+export function CryptologyLayout() {
   const [option, setOption] = createSignal<OptionCripto>(
     OptionCripto.CaesarCipher
   );
