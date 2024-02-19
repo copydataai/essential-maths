@@ -76,7 +76,10 @@ export function CriptologyLayout() {
             setCipher={setVigenereCipher}
             setKeypass={setKeypass}
           />
-          <textarea class="textarea textarea-lg w-full max-w-sm" disabled>
+          <textarea
+            class="textarea textarea-success textarea-lg w-full max-w-sm"
+            readonly
+          >
             {cipherVigenere()}
           </textarea>
         </div>
@@ -98,7 +101,10 @@ export function CriptologyLayout() {
             setShift={setShift}
             setSide={setSide}
           />
-          <textarea class="textarea textarea-lg w-full max-w-sm" disabled>
+          <textarea
+            class="textarea textarea-success textarea-lg w-full max-w-sm"
+            readonly
+          >
             {cipherCaesar()}
           </textarea>
         </div>
