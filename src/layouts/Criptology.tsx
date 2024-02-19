@@ -24,21 +24,30 @@ export function CriptologyLayout() {
   const [side, setSide] = createSignal<Side>(Side.Right);
   const [caesarCipher, setCaesarCipher] = createSignal<string>("");
   const [vigenereCipher, setVigenereCipher] = createSignal<string>("");
-  const [mode, setMode] = createSignal<boolean>(true);
+  const [mode, setMode] = createSignal<boolean>(false);
 
   const quoteJuliusCaesar = "I came, I saw and I conquered by Julius Caesar.";
   const quoteVigenere =
     "The Arts are learnt by reason and method; they are mastered by practice. by Leon Battista Alberti.";
 
-  const cipherMemo = createMemo<string>(() => {
+  const cipherCaesar = createMemo<string>(() => {
     const encodeMode = mode();
     const optionCripto = option();
     if (optionCripto === OptionCripto.CaesarCipher) {
+      console.log(side());
       if (encodeMode) {
+        console.log("encode");
         return encodeCaesarCipher(caesarCipher(), shift(), side());
       }
       return decodeCaesarCipher(caesarCipher(), shift(), side());
     }
+
+    return "";
+  });
+
+  const cipherVigenere = createMemo<string>(() => {
+    const encodeMode = mode();
+    const optionCripto = option();
     if (optionCripto === OptionCripto.VigenereCipher) {
       if (encodeMode) {
         return encodeVigenereCipher(vigenereCipher(), keypass());
@@ -50,31 +59,50 @@ export function CriptologyLayout() {
   });
 
   return (
-    <div class="mb-4 flex flex-col items-center">
-      <CriptoToggleButton setOption={setOption} setMode={setMode} />
-      <Show
-        when={option() === OptionCripto.CaesarCipher}
-        fallback={
+    <div class="flex flex-col items-center">
+      <div role="tablist" class="tabs tabs-bordered">
+        <input
+          type="radio"
+          name="option"
+          role="tab"
+          onChange={() => setOption(OptionCripto.VigenereCipher)}
+          class="tab ml-20"
+          aria-label="Vigenere"
+        />
+        <div role="tabpanel" class="tab-content p-10">
+          <CriptoToggleButton setMode={setMode} />
           <Vigenere
             placeholder={quoteVigenere}
             setCipher={setVigenereCipher}
             setKeypass={setKeypass}
           />
-        }
-      >
-        <Caesar
-          placeholder={quoteJuliusCaesar}
-          setCipher={setCaesarCipher}
-          setShift={setShift}
-          setSide={setSide}
+          <textarea class="textarea textarea-lg w-full max-w-sm" disabled>
+            {cipherVigenere()}
+          </textarea>
+        </div>
+
+        <input
+          type="radio"
+          name="option"
+          role="tab"
+          onChange={() => setOption(OptionCripto.CaesarCipher)}
+          class="tab"
+          aria-label="Caesar"
+          checked
         />
-      </Show>
-      <textarea
-        class="textarea textarea-bordered textarea-lg w-full max-w-sm"
-        readonly
-      >
-        {cipherMemo()}
-      </textarea>
+        <div role="tabpanel" class="tab-content p-10">
+          <CriptoToggleButton setMode={setMode} />
+          <Caesar
+            placeholder={quoteJuliusCaesar}
+            setCipher={setCaesarCipher}
+            setShift={setShift}
+            setSide={setSide}
+          />
+          <textarea class="textarea textarea-lg w-full max-w-sm" disabled>
+            {cipherCaesar()}
+          </textarea>
+        </div>
+      </div>
     </div>
   );
 }
