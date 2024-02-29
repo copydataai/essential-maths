@@ -1,0 +1,12 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Header from "../../layouts/Header.astro";
+import { BooleanLogicLayout } from "../../layouts/BooleanLogic.tsx";
+import Footer from "../../layouts/Footer.astro";
+---
+
+<Layout title="Boolean Logic" description="A simple way to see the truth tables">
+  <Header />
+  <BooleanLogicLayout client:only />
+  <Footer />
+</Layout>
