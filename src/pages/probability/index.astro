@@ -1,0 +1,12 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Header from "../../layouts/Header.astro";
+import { ProbabilityLayout } from "../../layouts/Probability.tsx";
+import Footer from "../../layouts/Footer.astro";
+---
+
+<Layout title="Probability" description="A simple way to see results about permutations, combinations and factorials">
+  <Header />
+  <ProbabilityLayout client:only />
+  <Footer />
+</Layout>
